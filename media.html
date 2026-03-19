@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="HTML Media Elements — learning how to embed audio, video, iframes, and figures with captions.">
+    <meta name="author" content="Purvik N Gowda">
+    <title>HTML Media Elements</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>HTML Media Elements</h1>
+        <nav>
+            <a href="chickens.html">Chickens</a> |
+            <a href="about.html">About</a> |
+            <a href="html-notes.html">HTML Notes</a> |
+            <a href="forms.html">Forms</a>
+        </nav>
+        <p>Exploring <code>&lt;img&gt;</code>, <code>&lt;figure&gt;</code>, <code>&lt;video&gt;</code>,
+            <code>&lt;audio&gt;</code>, and <code>&lt;iframe&gt;</code>.
+        </p>
+    </header>
+
+    <main>
+
+        <!-- =========================================================
+             1. FIGURE & FIGCAPTION
+        ========================================================== -->
+        <section id="figures">
+            <h2>1. Figure &amp; Figcaption</h2>
+            <p>
+                The <code>&lt;figure&gt;</code> element wraps self-contained content like images, diagrams,
+                or code snippets. The <code>&lt;figcaption&gt;</code> provides a visible caption, which is
+                better for accessibility than relying only on the <code>alt</code> attribute.
+            </p>
+
+            <figure>
+                <img src="pp.png" alt="A chicken in the wild" width="400">
+                <figcaption>
+                    Fig 1 — A chicken (<em>Gallus gallus domesticus</em>), the subject of our first HTML project.
+                </figcaption>
+            </figure>
+
+            <h3>Key Differences: alt vs figcaption</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Attribute / Element</th>
+                        <th>Visible to User?</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>alt</code></td>
+                        <td>No (only when image fails to load)</td>
+                        <td>Screen readers &amp; broken-image fallback — accessibility &amp; SEO</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;figcaption&gt;</code></td>
+                        <td>Yes — always visible</td>
+                        <td>Descriptive caption for the user — attribution, context, source</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- =========================================================
+             2. VIDEO ELEMENT
+        ========================================================== -->
+        <section id="video">
+            <h2>2. Video Element</h2>
+            <p>
+                The <code>&lt;video&gt;</code> element embeds video directly in the browser — no plugin needed.
+                It supports multiple <code>&lt;source&gt;</code> elements so the browser picks the format it supports.
+            </p>
+
+            <pre><code>&lt;video width="640" height="360" controls poster="thumbnail.jpg"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    &lt;p&gt;Your browser does not support HTML5 video.
+       &lt;a href="video.mp4"&gt;Download the video&lt;/a&gt; instead.&lt;/p&gt;
+&lt;/video&gt;</code></pre>
+
+            <h3>Important Video Attributes</h3>
+            <table border="1">
+                <caption>HTML Video Element Attributes</caption>
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>controls</code></td>
+                        <td>Shows play/pause/volume controls</td>
+                    </tr>
+                    <tr>
+                        <td><code>autoplay</code></td>
+                        <td>Starts playing immediately (must pair with <code>muted</code> in most browsers)</td>
+                    </tr>
+                    <tr>
+                        <td><code>muted</code></td>
+                        <td>Mutes audio by default</td>
+                    </tr>
+                    <tr>
+                        <td><code>loop</code></td>
+                        <td>Restarts video when it ends</td>
+                    </tr>
+                    <tr>
+                        <td><code>poster</code></td>
+                        <td>Image shown before video plays (like a thumbnail)</td>
+                    </tr>
+                    <tr>
+                        <td><code>preload</code></td>
+                        <td><code>auto</code> / <code>metadata</code> / <code>none</code> — hints for the browser</td>
+                    </tr>
+                    <tr>
+                        <td><code>width</code> / <code>height</code></td>
+                        <td>Dimensions in pixels</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- =========================================================
+             3. AUDIO ELEMENT
+        ========================================================== -->
+        <section id="audio">
+            <h2>3. Audio Element</h2>
+            <p>
+                The <code>&lt;audio&gt;</code> element embeds sound clips. Like <code>&lt;video&gt;</code>,
+                it accepts multiple <code>&lt;source&gt;</code> child elements.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="sound.mp3" type="audio/mpeg"&gt;
+    &lt;source src="sound.ogg" type="audio/ogg"&gt;
+    &lt;p&gt;Your browser does not support the audio element.&lt;/p&gt;
+&lt;/audio&gt;</code></pre>
+
+            <h3>Common Audio Attributes</h3>
+            <ul>
+                <li><code>controls</code> — displays the audio player UI</li>
+                <li><code>autoplay</code> — plays on load (use with caution — bad UX)</li>
+                <li><code>loop</code> — loops the audio</li>
+                <li><code>muted</code> — starts with muted audio</li>
+                <li><code>preload="auto"</code> — preloads the audio file</li>
+            </ul>
+
+            <h3>Supported Audio Formats</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Format</th>
+                        <th>MIME Type</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MP3</td>
+                        <td><code>audio/mpeg</code></td>
+                        <td>Most widely supported, good compression</td>
+                    </tr>
+                    <tr>
+                        <td>OGG</td>
+                        <td><code>audio/ogg</code></td>
+                        <td>Open format, supported in Firefox &amp; Chrome</td>
+                    </tr>
+                    <tr>
+                        <td>WAV</td>
+                        <td><code>audio/wav</code></td>
+                        <td>Uncompressed, very large file size — use for short clips</td>
+                    </tr>
+                    <tr>
+                        <td>AAC</td>
+                        <td><code>audio/aac</code></td>
+                        <td>Apple's format, good quality at low bitrates</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- =========================================================
+             4. IFRAME
+        ========================================================== -->
+        <section id="iframe">
+            <h2>4. Inline Frames (<code>&lt;iframe&gt;</code>)</h2>
+            <p>
+                The <code>&lt;iframe&gt;</code> element embeds another webpage inside the current page.
+                Commonly used for embedding YouTube videos, Google Maps, or social media widgets.
+            </p>
+
+            <pre><code>&lt;!-- Embedding a YouTube video --&gt;
+&lt;iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h3>iframe Security Considerations</h3>
+            <ul>
+                <li>Always add a <code>title</code> attribute for screen reader accessibility.</li>
+                <li>Use <code>sandbox</code> attribute to restrict embedded content capabilities.</li>
+                <li>Be cautious embedding third-party sites — they can pose XSS risks.</li>
+                <li>Some sites block being embedded via the <code>X-Frame-Options</code> HTTP header.</li>
+            </ul>
+        </section>
+
+        <!-- =========================================================
+             5. HTML5 MEDIA — KEY TAKEAWAYS
+        ========================================================== -->
+        <section id="takeaways">
+            <h2>5. Key Takeaways on HTML Media</h2>
+            <ol>
+                <li>Use <code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code> instead of bare
+                    <code>&lt;img&gt;</code> when an image needs a descriptive caption.
+                </li>
+                <li>Always provide a fallback message inside <code>&lt;video&gt;</code> and
+                    <code>&lt;audio&gt;</code> for browsers that don't support the element.
+                </li>
+                <li>Offer multiple <code>&lt;source&gt;</code> formats (e.g., MP4 + WebM) to maximize browser
+                    compatibility.</li>
+                <li>Never use <code>autoplay</code> without <code>muted</code> — browsers block auto-playing
+                    audio by default.</li>
+                <li>Every <code>&lt;iframe&gt;</code> must have a <code>title</code> attribute for accessibility.</li>
+                <li>Lazy loading (<code>loading="lazy"</code>) can be applied to both <code>&lt;img&gt;</code>
+                    and <code>&lt;iframe&gt;</code> to improve page performance.</li>
+            </ol>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 Purvik N Gowda &mdash; Web Developer Bootcamp</small></p>
+    </footer>
+
+</body>
+
+</html>
