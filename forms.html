@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="HTML Forms Practice — learning input types, labels, fieldsets, and form validation attributes.">
+    <meta name="author" content="Purvik N Gowda">
+    <title>HTML Forms Practice</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>HTML Forms Practice</h1>
+        <nav>
+            <a href="chickens.html">Chickens</a> |
+            <a href="about.html">About</a> |
+            <a href="html-notes.html">HTML Notes</a>
+        </nav>
+        <p>Exploring <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>,
+            <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>, and more.
+        </p>
+    </header>
+
+    <main>
+
+        <!-- =========================================================
+             FORM 1: Contact Form — basic input types
+        ========================================================== -->
+        <section>
+            <h2>1. Basic Contact Form</h2>
+            <p>Demonstrates: <code>text</code>, <code>email</code>, <code>tel</code>, <code>textarea</code>,
+                <code>label</code>, <code>required</code>, <code>placeholder</code>.
+            </p>
+
+            <form action="#" method="post">
+
+                <!-- Text input with label -->
+                <label for="full-name">Full Name <span>*</span></label>
+                <input
+                    type="text"
+                    id="full-name"
+                    name="full-name"
+                    placeholder="e.g. Purvik Gowda"
+                    required
+                    autocomplete="name">
+
+                <!-- Email input -->
+                <label for="email">Email Address <span>*</span></label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="e.g. you@example.com"
+                    required
+                    autocomplete="email">
+
+                <!-- Telephone input -->
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+91 98765 43210"
+                    autocomplete="tel">
+
+                <!-- Textarea -->
+                <label for="message">Message <span>*</span></label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    cols="40"
+                    placeholder="Write your message here..."
+                    required></textarea>
+
+                <button type="submit">Send Message</button>
+                <button type="reset">Clear Form</button>
+
+            </form>
+        </section>
+
+        <!-- =========================================================
+             FORM 2: Survey Form — radio, checkbox, select, range
+        ========================================================== -->
+        <section>
+            <h2>2. Survey Form</h2>
+            <p>Demonstrates: <code>radio</code>, <code>checkbox</code>, <code>select</code>,
+                <code>option</code>, <code>optgroup</code>, <code>range</code>, <code>fieldset</code>,
+                <code>legend</code>.
+            </p>
+
+            <form action="#" method="get">
+
+                <!-- Fieldset with legend for radio buttons -->
+                <fieldset>
+                    <legend>What best describes you?</legend>
+
+                    <label>
+                        <input type="radio" name="role" value="student" checked>
+                        Student
+                    </label>
+
+                    <label>
+                        <input type="radio" name="role" value="professional">
+                        Working Professional
+                    </label>
+
+                    <label>
+                        <input type="radio" name="role" value="freelancer">
+                        Freelancer
+                    </label>
+                </fieldset>
+
+                <!-- Fieldset with checkboxes -->
+                <fieldset>
+                    <legend>Which topics are you learning? (select all that apply)</legend>
+
+                    <label>
+                        <input type="checkbox" name="topics" value="html" checked>
+                        HTML
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="topics" value="css">
+                        CSS
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="topics" value="js">
+                        JavaScript
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="topics" value="git">
+                        Git &amp; GitHub
+                    </label>
+                </fieldset>
+
+                <!-- Select dropdown with optgroup -->
+                <label for="experience">Years of coding experience:</label>
+                <select id="experience" name="experience">
+                    <optgroup label="Beginner">
+                        <option value="0">Less than 6 months</option>
+                        <option value="1" selected>6 months – 1 year</option>
+                    </optgroup>
+                    <optgroup label="Intermediate">
+                        <option value="2">1 – 2 years</option>
+                        <option value="3">2 – 3 years</option>
+                    </optgroup>
+                    <optgroup label="Advanced">
+                        <option value="5">3 – 5 years</option>
+                        <option value="10">5+ years</option>
+                    </optgroup>
+                </select>
+
+                <!-- Range slider -->
+                <label for="confidence">
+                    Confidence with HTML (1 = none, 10 = expert):
+                    <output id="confidence-output">5</output>
+                </label>
+                <input
+                    type="range"
+                    id="confidence"
+                    name="confidence"
+                    min="1"
+                    max="10"
+                    value="5"
+                    oninput="document.getElementById('confidence-output').value = this.value">
+
+                <button type="submit">Submit Survey</button>
+
+            </form>
+        </section>
+
+        <!-- =========================================================
+             FORM 3: Account Registration — number, date, password, url
+        ========================================================== -->
+        <section>
+            <h2>3. Account Registration Form</h2>
+            <p>Demonstrates: <code>password</code>, <code>number</code>, <code>date</code>,
+                <code>url</code>, <code>min</code>, <code>max</code>, <code>minlength</code>,
+                <code>maxlength</code>, <code>pattern</code>.
+            </p>
+
+            <form action="#" method="post" novalidate>
+
+                <label for="username">Username <span>*</span></label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    minlength="3"
+                    maxlength="20"
+                    pattern="[a-zA-Z0-9_]+"
+                    placeholder="3–20 chars, letters/numbers/underscore"
+                    required>
+
+                <label for="password">Password <span>*</span></label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    minlength="8"
+                    placeholder="At least 8 characters"
+                    required>
+
+                <label for="age">Age</label>
+                <input
+                    type="number"
+                    id="age"
+                    name="age"
+                    min="13"
+                    max="120"
+                    placeholder="13–120">
+
+                <label for="dob">Date of Birth</label>
+                <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    min="1900-01-01"
+                    max="2013-12-31">
+
+                <label for="website">Your Website / Portfolio (optional)</label>
+                <input
+                    type="url"
+                    id="website"
+                    name="website"
+                    placeholder="https://your-portfolio.com">
+
+                <button type="submit">Create Account</button>
+
+            </form>
+        </section>
+
+        <!-- =========================================================
+             FORM ELEMENTS REFERENCE TABLE
+        ========================================================== -->
+        <section>
+            <h2>4. Form Elements Reference</h2>
+            <table border="1">
+                <caption>HTML Form Input Types — Quick Reference</caption>
+                <thead>
+                    <tr>
+                        <th>Input Type</th>
+                        <th>Syntax</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>text</td>
+                        <td><code>type="text"</code></td>
+                        <td>Single-line plain text</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td><code>type="email"</code></td>
+                        <td>Email address — browser validates format</td>
+                    </tr>
+                    <tr>
+                        <td>password</td>
+                        <td><code>type="password"</code></td>
+                        <td>Masked text input</td>
+                    </tr>
+                    <tr>
+                        <td>number</td>
+                        <td><code>type="number"</code></td>
+                        <td>Numeric input with min/max/step</td>
+                    </tr>
+                    <tr>
+                        <td>tel</td>
+                        <td><code>type="tel"</code></td>
+                        <td>Phone number (triggers numeric keyboard on mobile)</td>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td><code>type="url"</code></td>
+                        <td>URL input — browser validates "https://" format</td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td><code>type="date"</code></td>
+                        <td>Date picker — returns YYYY-MM-DD</td>
+                    </tr>
+                    <tr>
+                        <td>radio</td>
+                        <td><code>type="radio"</code></td>
+                        <td>Single select from a group (same name)</td>
+                    </tr>
+                    <tr>
+                        <td>checkbox</td>
+                        <td><code>type="checkbox"</code></td>
+                        <td>Multi-select toggle inputs</td>
+                    </tr>
+                    <tr>
+                        <td>range</td>
+                        <td><code>type="range"</code></td>
+                        <td>Slider for numeric values between min/max</td>
+                    </tr>
+                    <tr>
+                        <td>submit</td>
+                        <td><code>type="submit"</code></td>
+                        <td>Submits the form</td>
+                    </tr>
+                    <tr>
+                        <td>reset</td>
+                        <td><code>type="reset"</code></td>
+                        <td>Resets all inputs to their default values</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Key concepts summary -->
+        <section>
+            <h2>5. Key Takeaways on HTML Forms</h2>
+            <ol>
+                <li>Always pair every <code>&lt;input&gt;</code> with a <code>&lt;label&gt;</code> using matching
+                    <code>for</code> / <code>id</code> attributes — essential for accessibility.
+                </li>
+                <li>
+                    The <code>name</code> attribute on an input is what gets sent to the server —
+                    without it, the value is ignored on form submit.
+                </li>
+                <li>Use <code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> to group related inputs
+                    (especially radio/checkbox groups).
+                </li>
+                <li>HTML5 provides built-in validation via <code>required</code>, <code>pattern</code>,
+                    <code>minlength</code>, <code>min</code>, <code>max</code> — no JavaScript needed for basics.
+                </li>
+                <li><code>method="get"</code> appends data to URL (for search/filter forms);
+                    <code>method="post"</code> sends data in the request body (for sensitive/large data).
+                </li>
+            </ol>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 Purvik N Gowda &mdash; Web Developer Bootcamp</small></p>
+    </footer>
+
+</body>
+
+</html>
